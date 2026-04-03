@@ -72,16 +72,15 @@
 			<audio src="opening.mp4" controls> </audio>
 
 
-<form>
- <label>
- Personnage prefere :
- <select>
-  <option value="male">Midorima</option>
-  <option value="male">Murasakibara</option>
-  <option value="male">Kise</option>
-  <option value="male">Aomine</option>
-  <option value="male">Kuroko</option>
-  <option value="male">Akashi</option>
-
+<form action="traitement.php" method="POST"></form>>
+ <p>Personnage prefere ?</p>
+ 
+  <input type="radio" name="choix" value="option1"> Midorima<br>
+   <input type="radio" name="choix" value="option2"> Murasakibara<br>
+      <input type="radio" name="choix" value="option3"> Kise<br>
+      <input type="radio" name="choix" value="option4"> Aomine<br>
+         <input type="radio" name="choix" value="option5"> Kuroko<br>
+         <input type="radio" name="choix" value="option6"> Akashi<br>
+   <button type="submit">Envoyer</button>
    </body>
 </html>
