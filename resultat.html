@@ -3,12 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Résultat</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.5s;
+        }
+
+        #imagePerso {
+            width: 300px;
+            margin-top: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        #imagePerso:hover {
+            transform: scale(1.1) rotate(-2deg);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.6);
+        }
+
+        #resultat {
+            margin-top: 40px;
+            font-size: 2em;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        }
+    </style>
 </head>
-<body style="text-align:center;">
+<body>
 
 <h1 id="resultat"></h1>
-
-<img id="imagePerso" src="" style="width:300px; margin-top:20px;">
+<img id="imagePerso" src="" alt="Personnage">
 
 <script>
 let params = new URLSearchParams(window.location.search);
@@ -31,15 +58,35 @@ if (perso) {
     };
 
     image.src = images[perso];
+
+    // Couleur de fond selon le personnage
     let couleurs = {
-    "Midorima": "green",
-    "Murasakibara": "purple",
-    "Kise": "yellow",
-    "Aomine": "blue",
-    "Kuroko": "lightblue",
-    "Akashi": "red"
-};
-document.body.style.backgroundColor = couleurs[perso];
+        "Midorima": "#1abc9c",
+        "Murasakibara": "#9b59b6",
+        "Kise": "#f1c40f",
+        "Aomine": "#2980b9",
+        "Kuroko": "#5dade2",
+        "Akashi": "#e74c3c"
+    };
+
+    document.body.style.backgroundColor = couleurs[perso];
+
+    // Vidéos associées
+    let videos = {
+        "Midorima": "midorima.mp4",
+        "Murasakibara": "murasakibara.mp4",
+        "Kise": "kise.mp4",
+        "Aomine": "aomine.mp4",
+        "Kuroko": "kuroko.mp4",
+        "Akashi": "akashi.mp4"
+    };
+
+    // Quand on clique sur l'image, on ouvre la vidéo dans un nouvel onglet
+    image.onclick = function() {
+        if(videos[perso]) {
+            window.open(videos[perso], "_blank");
+        }
+    };
 
 } else {
     texte.innerText = "Aucun personnage choisi.";
