@@ -2,6 +2,7 @@
 <html lang="fr">
    <head>
       <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <title> Guide generation miracle </title>
       <body style="background-color:#FF0000;">
 
@@ -17,7 +18,7 @@
        background:#677bd2;
        padding: 16px 32px;
        border-radius: 16px;
-       border: 2px solid #fb923c
+       border: 2px solid #fb923c;
        font-size: 20px;
        color: purple;
     }
@@ -72,15 +73,33 @@
 			<audio src="opening.mp4" controls> </audio>
 
 
-<form action="traitement.php" method="POST"></form>
- <p>Personnage prefere ?</p>
- 
-  <input type="radio" name="choix" value="option1"> Midorima<br>
-   <input type="radio" name="choix" value="option2"> Murasakibara<br>
-      <input type="radio" name="choix" value="option3"> Kise<br>
-      <input type="radio" name="choix" value="option4"> Aomine<br>
-         <input type="radio" name="choix" value="option5"> Kuroko<br>
-         <input type="radio" name="choix" value="option6"> Akashi<br>
-   <button type="submit">Valider</button>
+<form onsubmit="return envoyerChoix()">
+
+<p>Personnage prefere ?</p>
+
+<input type="radio" name="choix" value="Midorima"> Midorima<br>
+<input type="radio" name="choix" value="Murasakibara"> Murasakibara<br>
+<input type="radio" name="choix" value="Kise"> Kise<br>
+<input type="radio" name="choix" value="Aomine"> Aomine<br>
+<input type="radio" name="choix" value="Kuroko"> Kuroko<br>
+<input type="radio" name="choix" value="Akashi"> Akashi<br>
+
+<button type="submit">Valider</button>
+<script>
+function envoyerChoix() {
+    let choix = document.querySelector('input[name="choix"]:checked');
+
+    if (choix) {
+        
+        window.location.href = "resultat.html?perso=" + choix.value;
+    } else {
+        alert("Choisis un personnage !");
+    }
+
+    return false; 
+}
+</script>
+
+</form>
    </body>
 </html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Résultat</title>
+</head>
+<body style="text-align:center;">
+
+<h1 id="resultat"></h1>
+
+<img id="imagePerso" src="" style="width:300px; margin-top:20px;">
+
+<script>
+let params = new URLSearchParams(window.location.search);
+let perso = params.get("perso");
+
+let texte = document.getElementById("resultat");
+let image = document.getElementById("imagePerso");
+
+if (perso) {
+    texte.innerText = "Vous avez choisi : " + perso;
+
+    // Associer chaque personnage à son image
+    let images = {
+        "Midorima": "midorima.jpg",
+        "Murasakibara": "murasakibara.jpg",
+        "Kise": "kise.jpg",
+        "Aomine": "aomine.jpg",
+        "Kuroko": "kuroko.jpg",
+        "Akashi": "akashi.jpg"
+    };
+
+    image.src = images[perso];
+    let couleurs = {
+    "Midorima": "green",
+    "Murasakibara": "purple",
+    "Kise": "yellow",
+    "Aomine": "blue",
+    "Kuroko": "lightblue",
+    "Akashi": "red"
+};
+document.body.style.backgroundColor = couleurs[perso];
+
+} else {
+    texte.innerText = "Aucun personnage choisi.";
+}
+</script>
+
+</body>
+</html>
